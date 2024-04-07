@@ -1,5 +1,11 @@
-# PortfolioBuilder 
+
 Welcome to My Portfolio-Builder Project 😍
+About Project:
+Developed a dynamic portfolio builder application using Angular,This project aims to provide users with a user-friendly interface to create and customize their portfolios, with features such as dynamic input fields, preview mode, Download into PDF format functionality, and color mode toggle.
+
+Technologies Used:  HTML, CSS, TypeScript, JavaScript, Angular, external JS library>jsPDF.
+
+
 
 Follow me on LinkedIn: https://www.linkedin.com/in/aniket-potbhare-a98b32245/
 
