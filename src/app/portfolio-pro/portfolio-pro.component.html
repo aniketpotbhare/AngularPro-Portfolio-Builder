@@ -1,0 +1,188 @@
+
+<div class="container">
+    <h1 *ngIf="showHeading">Portfolio</h1>
+    <ng-container *ngIf="!submitted;else preview">
+        <h2>Personal Information📝</h2> <br>
+        <form  #frmReg="ngForm" (ngSubmit)="save()"  novalidate="" autocomplete="on">
+            <!-- main div -->
+            <div>
+                <div>   
+                <label for="fullname">Name:</label>
+                <input type="text" name="fullname" [(ngModel)]="fullname" required/>
+                <br><br>
+                   </div>
+            <div>
+                <label for="emaill">Email:</label>
+                <input type="email" name="emaill" [(ngModel)]="email" 
+                required />
+                <br><br>
+            </div>
+
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="number" name="phone" [(ngModel)]="phone" 
+                required />
+                <br><br>
+            </div>
+
+            <div>
+                <label for="add">Address:</label>
+                <input type="text" name="add" [(ngModel)]="address" 
+                required />
+                <br><br>
+            </div>
+
+            <div>
+                <label for="linkdin">LinkedIn:</label>
+                <input type="url" name="linkdin" [(ngModel)]="linkdin" 
+                required />
+                <br><br>
+            </div>
+
+            <div>
+                <label for="website">Personal Website:</label>
+                <input type="url" name="website" [(ngModel)]="website" 
+                required/>
+                <br><br>
+            </div>
+    </div>
+
+        </form> <br>
+
+        <h2>Qualifications👨‍🎓</h2>
+        <div *ngFor="let q of qualifications; let i =index">
+            <h3>Qualification {{i+1}} :</h3>
+            <form>
+                <div>
+                    <label for="school">School/Collage:</label>
+                    <input type="text" name="school" [(ngModel)]="q.school" 
+                    required/>
+                    <br><br>
+                </div>
+                <div>
+                    <label for="degree">Degree:</label>
+                    <input type="text" name="degree" [(ngModel)]="q.degree" 
+                    required />
+                    <br> <br>
+                </div>
+                <div>
+                    <label for="year">Year:</label>
+                    <input type="number" name="year" [(ngModel)]="q.year" 
+                    required/>
+                    <br><br>
+                </div>
+            </form> <br>
+        </div>
+        <h2>Skills Set👨‍💻</h2>
+        <form>
+            <div>
+                <label for="skill1">Skill 1:</label>
+                <input type="text" name="skill1" [(ngModel)]="skill1" 
+                required/>
+                <br><br>
+            </div>
+            <div>
+                <label for="skill2">Skill 2:</label>
+                <input type="text" name="skill2" [(ngModel)]="skill2" 
+                required />
+                <br> <br>
+            </div>
+            <div>
+                <label for="skill3">Skill 3:</label>
+                <input type="text" name="skill3" [(ngModel)]="skill3" 
+                required />
+                <br><br>
+            </div>
+
+        </form>
+
+        <div class="btn-container">
+
+            <button (click)="addQualification()">Add Qualification</button>
+            <button type="submit" [disabled]="frmReg.invalid"  (click)="save()">Submit</button>
+            <button type="reset" (click)="reset()">Reset</button>
+
+        </div>
+
+    </ng-container>
+
+
+    <!-- <div class="table">
+<table border="1 px">
+     <tr>
+    <th>Name</th>
+    <th>email</th>
+    <th>phone</th>
+    <th>Address</th>
+    <th>LinkdIn</th>
+    <th>Website</th>
+    <th>School/Collage</th>
+    <th>Degree</th>
+    <th>Year</th>
+    </tr>
+    <tr *ngFor="let i of stud">
+        <td>{{i.Name}}/td>
+        <td>{{i.Email }}</td>
+        <td>{{i.Phone }}</td>
+        <td>{{i.Address}}</td>
+        <td>{{i.Linkdin}}</td>
+        <td>{{i.Website}}</td>
+        <td>{{i.School}}</td>
+        <td>{{i.Degree}}</td>
+        <td>{{i.Year  }}</td>
+        
+    </tr>
+</table>
+
+</div> -->
+    <ng-template #preview>
+        <div class="toggle">
+            <button (click)="toggleMode()">
+                {{colorMode==="lightMode"?"Switch to DarkMode":
+                "Switch to LightMode"}}</button>
+        </div>
+        <div class="preview-container" [ngClass]="colorMode">
+            <h2>Preview:</h2>
+
+            <!-- <div *ngFor="let i of stud"> -->
+
+            <!-- <p [ngClass]="{'name':true}">{{fullname}}</p> -->
+            <p [ngClass]="{'name':true}">{{fullname}}</p>
+
+            <p>Email:{{email }}</p>
+            <p>Phone:{{phone }}</p>
+            <p>Address:{{address}}</p>
+            <p>LinkdIn:{{linkdin}}</p>
+            <p>Website:{{website}}</p>
+
+
+            <div>
+                <h3>Qualifications👨‍🎓</h3>
+
+                <div *ngFor=" let q of qualifications">
+                    <h5>School/Collage:{{q.school}}</h5>
+                    <h5>Degree:{{q.degree}}</h5>
+                    <h5>Year:{{q.year }}</h5>
+                </div>
+            </div>
+
+            <div>
+                <h3>Skills👨‍💻</h3>
+                <p>Skill 1:{{skill1}}</p>
+                <p>Skill 2:{{skill2}}</p>
+                <p>Skill 3:{{skill3}}</p>
+            </div>
+            <div class="previewbuttons">
+            <a href="#"> <button  class="btn-edit 1" (click)="edit()">EDIT📝 </button> </a>
+           <a href="#"> <button class="btn-edit 2" (click)="generatePDF()">DOWNLOAD📁</button> </a>
+             <a href="ng-container"><button class="btn-edit 3" >DELETE 🗑</button> </a>
+            </div>
+    </div>
+    </ng-template>
+
+    <div class="container">
+        <footer>
+            <a href="https://www.linkedin.com/in/aniket-potbhare-a98b32245/" target="_blank"><H4>Copyright @2024 -Aniket Potbhare</H4></a>
+        </footer>
+    </div>
+</div>

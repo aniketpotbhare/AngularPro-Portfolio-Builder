@@ -1,0 +1,93 @@
+<div class="container">
+    <h1 *ngIf="showHeading">Portfolio</h1>
+    <ng-container *ngIf="!submitted;else preview">
+        <h2>Personal Information📝</h2> <br>
+        <form    autocomplete="on">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" [(ngModel)]="name" />
+                <br><br>
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" [(ngModel)]="email" required="email" />
+                <br><br>
+            </div>
+
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="number" name="phone" [(ngModel)]="phone" />
+                <br><br>
+            </div>
+
+            <div>
+                <label for="add">Address:</label>
+                <input type="text" name="add" [(ngModel)]="address" />
+                <br><br>
+            </div>
+
+            <div>
+                <label for="linkdin">LinkedIn:</label>
+                <input type="url" name="linkdin" [(ngModel)]="linkdin" />
+                <br><br>
+            </div>
+
+            <div>
+                <label for="website">Personal Website:</label>
+                <input type="url" name="website" [(ngModel)]="website" />
+                <br><br>
+            </div>
+        </form> <br>
+
+        <h2>Qualifications👨‍🎓</h2>
+        <div *ngFor="let q of qualifications; let i =index">
+            <h3>Qualification {{i+1}} :</h3>
+            <form>
+                <div>
+                    <label for="school">School/Collage:</label>
+                    <input type="text" name="school" [(ngModel)]="q.school" />
+                    <br><br>
+                </div>
+                <div>
+                    <label for="degree">Degree:</label>
+                    <input type="text" name="degree" [(ngModel)]="q.degree" />
+                    <br> <br>
+                </div>
+                <div>
+                    <label for="year">Year:</label>
+                    <input type="number" name="year" [(ngModel)]="q.year" />
+                    <br><br>
+                </div>
+            </form> <br>
+        </div>
+        <h2>Skills Set👨‍💻</h2>
+        <form>
+            <div>
+                <label for="skill1">Skill 1:</label>
+                <input type="text" name="skill1" [(ngModel)]="skill1" />
+                <br><br>
+            </div>
+            <div>
+                <label for="skill2">Skill 2:</label>
+                <input type="text" name="skill2" [(ngModel)]="skill2" />
+                <br> <br>
+            </div>
+            <div>
+                <label for="skill3">Skill 3:</label>
+                <input type="text" name="skill3" [(ngModel)]="skill3" />
+                <br><br>
+            </div>
+
+        </form>
+
+        <div class="btn-container">
+
+
+            <button (click)="addQualification()">Add Qualifications</button>
+            <button type="submit" (click)="save()">Submit</button>
+            <button type="reset" (click)="reset()">RESET</button>
+
+        </div>
+
+    </ng-container>
